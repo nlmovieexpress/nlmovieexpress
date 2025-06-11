@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NL Movie Express</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #111; color: #fff; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #00ffcc; }
+    input[type="text"] {
+      width: 100%; padding: 12px; margin-bottom: 20px; border: none;
+      border-radius: 5px; font-size: 16px;
+    }
+    .movie-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+    .movie { background: #222; border-radius: 8px; padding: 10px; text-align: center; transition: 0.3s; }
+    .movie:hover { background: #333; }
+    .movie a { color: #00ffcc; text-decoration: none; display: block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>NL Movie Express</h1>
+  <input type="text" id="searchInput" placeholder="Search for a movie...">
+  <div class="movie-list" id="movieList">
+    <div class="movie"><strong>Borbaad</strong><a href="https://drive.google.com/file/d/1Uq7uy4L2q4zW3GrMkkHihFY-8Tocc4zT/view?usp=drivesdk" target="_blank">Watch Now</a></div>
+    <div class="movie"><strong>Daagi</strong><a href="https://drive.google.com/file/d/1pvEDR79_6Yy-dKjY-BlCmZX-VlDKHER8/view?usp=drivesdk" target="_blank">Watch Now</a></div>
+    <div class="movie"><strong>Chakkar</strong><a href="https://drive.google.com/file/d/1rC-H82A7tf82lKxIkiaW_WCMitVwnH7U/view?usp=drivesdk" target="_blank">Watch Now</a></div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const movieList = document.getElementById("movieList").children;
+
+    searchInput.addEventListener("keyup", function() {
+      const query = this.value.toLowerCase();
+      Array.from(movieList).forEach(movie => {
+        const title = movie.textContent.toLowerCase();
+        movie.style.display = title.includes(query) ? "block" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
